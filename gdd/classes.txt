@@ -1,0 +1,97 @@
+-- Roles --
+Assassin - Single Unit DPS
+Ravager - AoE DPS
+Depleter - DoT DPS
+Tank - Damage Sponge
+Buffer - Gives Buffs + Morale Heal
+Debuffer - Gives Debuffs + Morale Damage
+Healer - Heals
+Controller - Bind + Stun
+Wildcard - Misc
+-- Classes --
+[Stahlmann] - Tank, Assassin
+high hp, high dmg. Exosuit-wearing soldier with high caliber rifle.
+- Suppressing Fire: Add 1 suppression to target and deal morale damage
+- Slug: high damage. stun on crit
+
+[Scholar] - Healer, Debuffer
+Heals allies and debuffs individual enemies
+- Reveal Weaknesses: apply weakness debuff
+- Tonics: apply 3 regens
+
+[Paladin] - Tank, Buffer
+Inspires and protects allies
+- Inspire: increase morale in an ally
+- Protect: if a targeted unit takes damage (hopefully they target an ally), this guy takes it instead
+
+[Berserker] - Tank, Ravager
+Taunts and tanks. very simple.
+- Reckless Attack: high damage. exhaustion to self on partial success or lower
+- Rage: apply 3 rage to self. for every 5 rage that's in the unit while this action is executed, +1 exhaustion
+
+[Jago] - Controller, Depleter
+A martial artist. Bleed then bind. Can twist the blade to multiply bleed.
+- Open wound: target receives damage and gains 3 bleed
+- Twist the Blade: target receives damage and multiplies their bleed by 2
+
+[Hemomancer] - Depleter, Assassin
+Bleeds enemies. Have an attack that basically consumes enemy bleed, multiply it, then turn it into one time damage.
+Basically explodes bleeding.
+- Open wound: target receives damage and gains 3 bleed
+- Heartburst: deal damage to the target equal to their bleed * 3
+
+[Sicario] - Assassin, Ravager
+Burst fire DPS. Guy with SMG.
+- Suppressing Fire: Add 1 suppression to target and deal morale damage
+- Spray and Pray: 3 attack burst
+
+------------------------ later batches
+
+[Shinobi] - Controller, Assassin
+Smoke bomb to stun. Then strike. Make enemies skip turns. Action econ scrambler.
+
+[Hellraiser] - Ravager, Depleter
+Dragon's breath shotgun shell. Need I say more?
+
+[Grafter] - Depleter, Unorthodox
+Lifesteal or damage increase. Snowballer. Starts out squishy. Copy actions from a killed enemy until next enemy is copied..
+
+[Draghul] - Debuffer, Depleter
+Bleed and make them scared. Have an attack which explodes terror by how much bleed a unit have.
+
+[Hexenjager] - Assassin, Debuffer
+Snipes and debuff enemy abilities. Can focus to give themself more accuracy.
+
+[Bladedancer] - Ravager, Buffer
+Wide sword sweeps and buffs friendly agility and accuracy. Ripostes enemy attacks.
+
+[Druid] - Depleter, healer
+Poisons enemies and heal allies through fruits. 
+
+[Fencer] - Debuffer, Assassin
+Taunts and feints to force enemies to miss and strong dps. Ripostes enemy attacks.
+
+[Kenshi] - Assassin, Healer
+Glass Cannon that protects others to take their place when they're damaged, and can stun themself to heal
+
+[Cloisterer] - Healer, Ravager
+A squishy cleric that mostly supports and heals.
+Have a nuke ability which stuns her for a long time. A really weak support with a free get outta jail card.
+
+[Battle Angel] - Buffer, Ravager
+DoT to multiple enemies while buffing allies. More supportive and make enemies squishier.
+
+[Lucha] - Controller, Buffer
+Binds enemies and gives morale to allies. Suplexes as bind breaker or submissions as dominance increase.
+
+[Pyromancer] - Ravager, Depleter
+AoE burn and bind breaker by heating metal.
+
+[Astrologer] - Assassin, Debuffer
+Stacks a special debuff to increase damage and nuke enemies.
+
+[Jezailer] - Assassin, Controller
+Kits to damage the enemies in bind and a strong finishing shot that stuns themself.
+
+[Technobarbarian] - Tank, Depleter
+A tanky guy with large bleed and terror kits. Pure agression more than Draghul's terror play.

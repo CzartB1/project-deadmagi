@@ -1,0 +1,235 @@
+[gd_scene format=3 uid="uid://c5guswad3hk4u"]
+
+[ext_resource type="Script" uid="uid://cc4pnlomrjhl7" path="res://assets/scripts/characters/unit.gd" id="1_s0mfc"]
+[ext_resource type="Script" uid="uid://dlin7q6rpwhj" path="res://assets/scripts/characters/actions/action.gd" id="2_3vawc"]
+[ext_resource type="Script" uid="uid://c6x43yb7jqfwa" path="res://assets/scripts/characters/actions/attack.gd" id="3_4nxhc"]
+[ext_resource type="Script" uid="uid://d2jbjshvkdnnx" path="res://assets/scripts/characters/actions/physical/reckless_attack.gd" id="4_4rbvh"]
+[ext_resource type="Script" uid="uid://cqwrec0qyr1d3" path="res://assets/scripts/characters/actions/bind_actions/initiate_bind.gd" id="4_teco3"]
+[ext_resource type="Script" uid="uid://x8f43cmsm45k" path="res://assets/scripts/characters/actions/bind_actions/struggle_for_dominance.gd" id="5_4lxt2"]
+[ext_resource type="Script" uid="uid://cwef7nbu10wgc" path="res://assets/scripts/characters/actions/physical/rage.gd" id="5_tbmqp"]
+[ext_resource type="Script" uid="uid://emkbcm62ka8a" path="res://assets/scripts/characters/actions/bind_actions/escape_bind.gd" id="6_y3020"]
+[ext_resource type="Script" uid="uid://gvgb7vu5x5mo" path="res://assets/scripts/characters/status_effect_manager.gd" id="7_0e2q3"]
+[ext_resource type="Script" uid="uid://bwqj47ja7e5ry" path="res://assets/scripts/characters/unit_model_3d.gd" id="8_2okc8"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="9_5qisd"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="10_ee2fh"]
+[ext_resource type="Script" uid="uid://blah3tn0y72sj" path="res://assets/scripts/characters/unit_blurb_manager.gd" id="11_k8kg6"]
+[ext_resource type="Script" uid="uid://dscajrc86dj61" path="res://assets/scripts/ui/enemy_status_ui.gd" id="12_0k3kc"]
+[ext_resource type="Script" uid="uid://b1js54yamxdfy" path="res://assets/scripts/ui/blurb_ui.gd" id="13_ideqr"]
+[ext_resource type="Theme" uid="uid://f1m3iqsrknej" path="res://assets/themes/blurbs.tres" id="16_tbmqp"]
+[ext_resource type="PackedScene" uid="uid://dbbiklpaueb1k" path="res://assets/scenes/ui/unit_action_panel.tscn" id="17_s38md"]
+
+[sub_resource type="Resource" id="Resource_7c61l"]
+script = ExtResource("3_4nxhc")
+metadata/_custom_type_script = "uid://c6x43yb7jqfwa"
+
+[sub_resource type="Resource" id="Resource_s38md"]
+script = ExtResource("4_4rbvh")
+metadata/_custom_type_script = "uid://d2jbjshvkdnnx"
+
+[sub_resource type="Resource" id="Resource_f6itm"]
+script = ExtResource("5_tbmqp")
+metadata/_custom_type_script = "uid://cwef7nbu10wgc"
+
+[sub_resource type="Resource" id="Resource_jwyoo"]
+script = ExtResource("4_teco3")
+metadata/_custom_type_script = "uid://cqwrec0qyr1d3"
+
+[sub_resource type="Resource" id="Resource_a1ijr"]
+script = ExtResource("5_4lxt2")
+metadata/_custom_type_script = "uid://x8f43cmsm45k"
+
+[sub_resource type="Resource" id="Resource_1jydo"]
+script = ExtResource("6_y3020")
+metadata/_custom_type_script = "uid://emkbcm62ka8a"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cykwq"]
+albedo_color = Color(0.69, 0.11730001, 0.11730001, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_s2oqn"]
+material = SubResource("StandardMaterial3D_cykwq")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_a1ijr"]
+viewport_path = NodePath("UnitBlurbManager")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1jydo"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_a1ijr")
+billboard_mode = 1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fndc5"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_1jydo")
+orientation = 2
+
+[sub_resource type="Resource" id="Resource_edf0t"]
+script = ExtResource("10_ee2fh")
+duration = 0.25
+transition = 1
+
+[sub_resource type="Resource" id="Resource_elhta"]
+script = ExtResource("10_ee2fh")
+duration = 0.2
+
+[sub_resource type="Resource" id="Resource_fndc5"]
+script = ExtResource("10_ee2fh")
+duration = 0.2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_elhta"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edf0t"]
+bg_color = Color(0.98, 0.7787733, 0.22540002, 1)
+
+[node name="berserker" type="Node" unique_id=116622251 node_paths=PackedStringArray("status_manager", "turn_cam", "bind_cam", "action_panel", "model") groups=["Unit"]]
+script = ExtResource("1_s0mfc")
+primary_role = 1
+secondary_role = 3
+status_manager = NodePath("status_manager")
+turn_cam = NodePath("UnitModel3D/turn_cam")
+bind_cam = NodePath("UnitModel3D/MeshInstance3D/bind_cam")
+action_panel = NodePath("CanvasLayer/action_panel")
+actions = Array[ExtResource("2_3vawc")]([SubResource("Resource_7c61l"), SubResource("Resource_s38md"), SubResource("Resource_f6itm"), SubResource("Resource_jwyoo")])
+binded_actions = Array[ExtResource("2_3vawc")]([SubResource("Resource_a1ijr"), SubResource("Resource_1jydo")])
+model = NodePath("UnitModel3D")
+
+[node name="status_manager" type="Node" parent="." unique_id=1508786230 node_paths=PackedStringArray("unit")]
+script = ExtResource("7_0e2q3")
+unit = NodePath("..")
+
+[node name="UnitModel3D" type="Node3D" parent="." unique_id=1811375537 node_paths=PackedStringArray("mesh", "unit", "crit_cam")]
+script = ExtResource("8_2okc8")
+mesh = NodePath("MeshInstance3D")
+unit = NodePath("..")
+crit_cam = NodePath("MeshInstance3D/crit_cam")
+metadata/_custom_type_script = "uid://bwqj47ja7e5ry"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="UnitModel3D" unique_id=925769174]
+mesh = SubResource("CapsuleMesh_s2oqn")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="UnitModel3D/MeshInstance3D" unique_id=2125749402]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3646643, 0)
+mesh = SubResource("PlaneMesh_fndc5")
+skeleton = NodePath("../..")
+
+[node name="crit_cam" type="Node3D" parent="UnitModel3D/MeshInstance3D" unique_id=725649099 node_paths=PackedStringArray("look_at_target")]
+transform = Transform3D(0.5806681, 0.20490241, -0.78793347, 1.4901161e-08, 0.96780974, 0.2516796, 0.8141404, -0.14614224, 0.5619766, -2.4802039, 0.7922201, 1.768952)
+script = ExtResource("9_5qisd")
+look_at_mode = 2
+look_at_target = NodePath("..")
+tween_resource = SubResource("Resource_edf0t")
+align_transform_with_view = Callable()
+align_rotation_with_view = Callable()
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="bind_cam" type="Node3D" parent="UnitModel3D/MeshInstance3D" unique_id=1102133276]
+transform = Transform3D(1, 0, 0, 0, 0.98230034, -0.18731274, 0, 0.18731274, 0.98230034, 0, 1.1451182, 1.998)
+top_level = true
+script = ExtResource("9_5qisd")
+follow_mode = 3
+look_at_mode = 3
+tween_resource = SubResource("Resource_elhta")
+follow_offset = Vector3(0, 0.8, 1.998)
+look_at_offset = Vector3(10.8, 0, 0)
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="turn_cam" type="Node3D" parent="UnitModel3D" unique_id=607658058 node_paths=PackedStringArray("look_at_target")]
+transform = Transform3D(0.99901587, 0.0070821545, -0.043111026, 2.3282383e-10, 0.98675114, 0.16209987, 0.043688696, -0.16194546, 0.9858066, -0.17512226, 1.5734694, 4.004467)
+script = ExtResource("9_5qisd")
+look_at_mode = 2
+look_at_target = NodePath("../MeshInstance3D")
+tween_resource = SubResource("Resource_fndc5")
+follow_offset = Vector3(0, 1.5, 3.575)
+look_at_offset = Vector3(0, 0.915, 0)
+align_transform_with_view = Callable()
+align_rotation_with_view = Callable()
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="UnitBlurbManager" type="SubViewport" parent="." unique_id=1939859397 node_paths=PackedStringArray("unit")]
+transparent_bg = true
+handle_input_locally = false
+script = ExtResource("11_k8kg6")
+unit = NodePath("..")
+damage_taken_blurbs = Array[String](["Owie"])
+morale_damage_blurbs = Array[String](["3:"])
+
+[node name="enemyStatus" type="CanvasLayer" parent="UnitBlurbManager" unique_id=1898579530 node_paths=PackedStringArray("u", "hp_bar", "morale_bar", "name_label", "status_label")]
+script = ExtResource("12_0k3kc")
+u = NodePath("../..")
+hp_bar = NodePath("VBoxContainer/ProgressBar")
+morale_bar = NodePath("VBoxContainer/ProgressBar2")
+name_label = NodePath("VBoxContainer/name")
+status_label = NodePath("VBoxContainer/status")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UnitBlurbManager/enemyStatus" unique_id=175866000]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="name" type="RichTextLabel" parent="UnitBlurbManager/enemyStatus/VBoxContainer" unique_id=1585613415]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 75
+fit_content = true
+
+[node name="ProgressBar" type="ProgressBar" parent="UnitBlurbManager/enemyStatus/VBoxContainer" unique_id=449150675]
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_elhta")
+value = 15.81
+
+[node name="ProgressBar2" type="ProgressBar" parent="UnitBlurbManager/enemyStatus/VBoxContainer" unique_id=1795323278]
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_edf0t")
+
+[node name="status" type="RichTextLabel" parent="UnitBlurbManager/enemyStatus/VBoxContainer" unique_id=1106496582]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+fit_content = true
+
+[node name="BlurbUI" type="CanvasLayer" parent="UnitBlurbManager" unique_id=1024466348 node_paths=PackedStringArray("unit", "blurb_box", "label")]
+script = ExtResource("13_ideqr")
+unit = NodePath("../..")
+blurb_box = NodePath("PanelContainer")
+label = NodePath("PanelContainer/MarginContainer/RichTextLabel")
+
+[node name="PanelContainer" type="PanelContainer" parent="UnitBlurbManager/BlurbUI" unique_id=184618832]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -30.5
+offset_bottom = 30.500122
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("16_tbmqp")
+
+[node name="MarginContainer" type="MarginContainer" parent="UnitBlurbManager/BlurbUI/PanelContainer" unique_id=2128428406]
+layout_mode = 2
+theme = ExtResource("16_tbmqp")
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UnitBlurbManager/BlurbUI/PanelContainer/MarginContainer" unique_id=1026987571]
+layout_mode = 2
+theme = ExtResource("16_tbmqp")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = ":3"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=851367354]
+layer = 15
+
+[node name="action_panel" parent="CanvasLayer" unique_id=438991143 node_paths=PackedStringArray("unit") instance=ExtResource("17_s38md")]
+unit = NodePath("../..")

@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dlcovo82xpf8s"]
+
+[node name="SlotButton" type="Button" unique_id=1417277655]
+offset_right = 44.0
+offset_bottom = 40.0

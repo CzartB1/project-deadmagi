@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://w3ye2lybtcbu"]
+
+[ext_resource type="Script" uid="uid://cb1dpcjaxn1ds" path="res://assets/scripts/characters/items/item_node.gd" id="1_jgclq"]
+
+[node name="Item" type="Node" unique_id=249899773]
+script = ExtResource("1_jgclq")
+metadata/_custom_type_script = "uid://cb1dpcjaxn1ds"

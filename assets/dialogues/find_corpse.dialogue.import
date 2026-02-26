@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://nwy4relksbl3"
+path="res://.godot/imported/find_corpse.dialogue-3122524b5830b0c48b1ba4ade76da76f.tres"
+
+[deps]
+
+source_file="res://assets/dialogues/find_corpse.dialogue"
+dest_files=["res://.godot/imported/find_corpse.dialogue-3122524b5830b0c48b1ba4ade76da76f.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://i2vcbg552jj7"]
+
+[ext_resource type="Script" uid="uid://cb1dpcjaxn1ds" path="res://assets/scripts/characters/items/item_node.gd" id="1_ufhtf"]
+
+[node name="ballistic_plate" type="Node" unique_id=249899773]
+script = ExtResource("1_ufhtf")
+item_name = "Ballistic Plate"
+description = "ass"
+body_bonus = 2
+metadata/_custom_type_script = "uid://cb1dpcjaxn1ds"

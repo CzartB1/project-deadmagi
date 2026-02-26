@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://u4u10k2exgrk"]
+
+[ext_resource type="Script" uid="uid://bjrk1q75enjp7" path="res://assets/scripts/ui/unit_panel_landmark.gd" id="1_vd1iu"]
+[ext_resource type="FontFile" uid="uid://bvbd78vlihutq" path="res://assets/fonts/Font Negra.ttf" id="2_p2pof"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b86cw"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wngwk"]
+bg_color = Color(0.853577, 0.64905524, 1.1551381e-06, 1)
+
+[node name="landmark_panel" type="PanelContainer" unique_id=735699895 node_paths=PackedStringArray("name_label", "hp_bar", "morale_bar", "hp_label", "morale_label", "action_option", "action_desc")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+script = ExtResource("1_vd1iu")
+name_label = NodePath("MarginContainer/VBoxContainer/NameLabel")
+hp_bar = NodePath("MarginContainer/VBoxContainer/HPBar")
+morale_bar = NodePath("MarginContainer/VBoxContainer/MoraleBar")
+hp_label = NodePath("MarginContainer/VBoxContainer/HPBar/hplabel")
+morale_label = NodePath("MarginContainer/VBoxContainer/MoraleBar/moralbar")
+action_option = NodePath("MarginContainer/VBoxContainer/ActionOptionButton")
+action_desc = NodePath("MarginContainer/VBoxContainer/Descriptions")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=508677696]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=303643214]
+layout_mode = 2
+
+[node name="NameLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=1099011425]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_p2pof")
+theme_override_fonts/bold_font = ExtResource("2_p2pof")
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 32
+bbcode_enabled = true
+text = "asdsdasd"
+fit_content = true
+
+[node name="HPBar" type="ProgressBar" parent="MarginContainer/VBoxContainer" unique_id=1283703488]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_b86cw")
+value = 35.99
+show_percentage = false
+
+[node name="hplabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HPBar" unique_id=1804831301]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.77002
+offset_top = -20.0
+offset_right = 73.77002
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "aaaa"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoraleBar" type="ProgressBar" parent="MarginContainer/VBoxContainer" unique_id=543807791]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_wngwk")
+value = 35.99
+show_percentage = false
+
+[node name="moralbar" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MoraleBar" unique_id=2087561344]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.77002
+offset_top = -20.0
+offset_right = 73.77002
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "aaaa"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ActionOptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer" unique_id=790559629]
+layout_mode = 2
+
+[node name="Descriptions" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=890706709]
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true

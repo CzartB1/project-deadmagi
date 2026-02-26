@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://bcw4qk5nx7kdm"]
+
+[ext_resource type="Script" uid="uid://dcasn0pravcby" path="res://assets/scripts/ui/party_menu_unit_panel.gd" id="1_p1g4o"]
+[ext_resource type="PackedScene" uid="uid://cg4fik12x3sye" path="res://assets/scenes/ui/party_menu_item_slot.tscn" id="2_i117t"]
+
+[node name="party_menu_unit_panel" type="Control" unique_id=2114523869 node_paths=PackedStringArray("portrait_rect", "name_label", "hp_label", "morale_label", "level_label", "xp_label", "strength_label", "agility_label", "body_label", "mind_label", "will_label", "item_slot_container", "backstory_label", "growth_list", "add_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p1g4o")
+portrait_rect = NodePath("VBoxContainer/header/TextureRect")
+name_label = NodePath("VBoxContainer/header/name_label")
+hp_label = NodePath("VBoxContainer/SubTabs/Stats/HPLabel")
+morale_label = NodePath("VBoxContainer/SubTabs/Stats/MoraleLabel")
+level_label = NodePath("VBoxContainer/SubTabs/Stats/LevelLabel")
+xp_label = NodePath("VBoxContainer/SubTabs/Stats/XPLabel")
+strength_label = NodePath("VBoxContainer/SubTabs/Stats/StrengthLabel")
+agility_label = NodePath("VBoxContainer/SubTabs/Stats/AgilityLabel")
+body_label = NodePath("VBoxContainer/SubTabs/Stats/BodyLabel")
+mind_label = NodePath("VBoxContainer/SubTabs/Stats/MindLabel")
+will_label = NodePath("VBoxContainer/SubTabs/Stats/WillLabel")
+item_slot_container = NodePath("VBoxContainer/SubTabs/Items/HBoxContainer")
+item_slot_scene = ExtResource("2_i117t")
+backstory_label = NodePath("VBoxContainer/SubTabs/Lore/BackstoryLabel")
+growth_list = NodePath("VBoxContainer/SubTabs/Growth/GrowthList")
+add_button = NodePath("VBoxContainer/SubTabs/Growth/AddButton")
+
+[node name="VBoxContainer" type="HBoxContainer" parent="." unique_id=256500218]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="header" type="VBoxContainer" parent="VBoxContainer" unique_id=142599276]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.35
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/header" unique_id=2007261422]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="name_label" type="RichTextLabel" parent="VBoxContainer/header" unique_id=1567996818]
+layout_mode = 2
+text = "aaaaa"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="SubTabs" type="TabContainer" parent="VBoxContainer" unique_id=2146199260]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="Stats" type="VBoxContainer" parent="VBoxContainer/SubTabs" unique_id=1532783514]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="HPLabel" type="RichTextLabel" parent="VBoxContainer/SubTabs/Stats" unique_id=2119803611]
+layout_mode = 2
+fit_content = true
+
+[node name="MoraleLabel" type="RichTextLabel" parent="VBoxContainer/SubTabs/Stats" unique_id=1801041108]
+layout_mode = 2
+fit_content = true
+
+[node name="LevelLabel" type="RichTextLabel" parent="VBoxContainer/SubTabs/Stats" unique_id=1022174130]
+layout_mode = 2
+fit_content = true
+
+[node name="XPLabel" type="RichTextLabel" parent="VBoxContainer/SubTabs/Stats" unique_id=77206784]
+layout_mode = 2
+fit_content = true
+
+[node name="StrengthLabel" type="RichTextLabel" parent="VBoxContainer/SubTabs/Stats" unique_id=301757092]
+layout_mode = 2
+fit_content = true
+
+[node name="AgilityLabel" type="RichTextLabel" parent="VBoxContainer/SubTabs/Stats" unique_id=991872588]
+layout_mode = 2
+fit_content = true
+
+[node name="BodyLabel" type="RichTextLabel" parent="VBoxContainer/SubTabs/Stats" unique_id=695165877]
+layout_mode = 2
+fit_content = true
+
+[node name="MindLabel" type="RichTextLabel" parent="VBoxContainer/SubTabs/Stats" unique_id=497749749]
+layout_mode = 2
+fit_content = true
+
+[node name="WillLabel" type="RichTextLabel" parent="VBoxContainer/SubTabs/Stats" unique_id=1722578494]
+layout_mode = 2
+fit_content = true
+
+[node name="Items" type="VBoxContainer" parent="VBoxContainer/SubTabs" unique_id=544396397]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/SubTabs/Items" unique_id=957073649]
+layout_mode = 2
+alignment = 1
+
+[node name="Lore" type="VBoxContainer" parent="VBoxContainer/SubTabs" unique_id=1125097207]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="BackstoryLabel" type="RichTextLabel" parent="VBoxContainer/SubTabs/Lore" unique_id=338803572]
+layout_mode = 2
+fit_content = true
+
+[node name="Growth" type="VBoxContainer" parent="VBoxContainer/SubTabs" unique_id=1007828886]
+visible = false
+layout_mode = 2
+tooltip_text = "Every 5 levels, a unit gains an upgrade in a stat. Which stat is determined by the patter of stats in this tab."
+metadata/_tab_index = 3
+
+[node name="GrowthList" type="VBoxContainer" parent="VBoxContainer/SubTabs/Growth" unique_id=1356529096]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AddButton" type="Button" parent="VBoxContainer/SubTabs/Growth" unique_id=1391271014]
+layout_mode = 2
+text = "Add"

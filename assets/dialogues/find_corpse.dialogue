@@ -1,0 +1,9 @@
+~ start
+You encounter a sun-bleached corpse lying in the side of a road.
+- Loot it
+	You loot it.
+	# TODO randomize either getting an item or finding out that it's undead or meeting its killer
+	=> END
+- Leave it alone 
+	=> END
+=> END

@@ -1,0 +1,22 @@
+~ start
+Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
+Nathan: Here are some choices.
+- Battle
+	You hear something from afar.
+	do GameManager.dialogue_end_battle_unlisted.emit(0)
+	=> END
+- Item
+	A portal opens
+	do GameManager.request_item_random()
+	The portal closes
+	=> END
+- Recruit
+	do GameManager.request_recruit("res://assets/scenes/characters/classes/hemomancer.tscn")
+	A stranger manifests
+	=> END
+- End the conversation
+	Nathan: Goodbye.
+	=> END
+- Start again => start
+Nathan: For more information see the online documentation.
+=> END

@@ -1,0 +1,288 @@
+[gd_scene format=3 uid="uid://dwab2fvv6gs7r"]
+
+[ext_resource type="Script" uid="uid://c4l7r6rpvhq87" path="res://assets/scenes/characters/enemies/wendigo_ai.gd" id="1_bgvmc"]
+[ext_resource type="Script" uid="uid://dlin7q6rpwhj" path="res://assets/scripts/characters/actions/action.gd" id="2_dh3q1"]
+[ext_resource type="Script" uid="uid://bymprd8xjm1o5" path="res://assets/scripts/characters/actions/magic/sow_fear.gd" id="3_bgvmc"]
+[ext_resource type="Script" uid="uid://cqwrec0qyr1d3" path="res://assets/scripts/characters/actions/bind_actions/initiate_bind.gd" id="4_mbunu"]
+[ext_resource type="Script" uid="uid://it8c6t6cliud" path="res://assets/scripts/characters/actions/magic/fear_harvest.gd" id="4_snlw1"]
+[ext_resource type="Script" uid="uid://owk0iblevl13" path="res://assets/scripts/characters/actions/magic/feed_on_fear.gd" id="5_7eudg"]
+[ext_resource type="Script" uid="uid://gvgb7vu5x5mo" path="res://assets/scripts/characters/status_effect_manager.gd" id="7_7s4hc"]
+[ext_resource type="Script" uid="uid://02vp3hdffr4g" path="res://assets/scripts/characters/actions/bind_actions/cull_the_weak_willed.gd" id="8_7eudg"]
+[ext_resource type="Script" uid="uid://bwqj47ja7e5ry" path="res://assets/scripts/characters/unit_model_3d.gd" id="8_13ji7"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="9_jqa0e"]
+[ext_resource type="Script" uid="uid://der1yy21srki8" path="res://assets/scripts/characters/actions/bind_actions/unsettling_visage.gd" id="9_v1jek"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="10_o1clw"]
+[ext_resource type="Script" uid="uid://blah3tn0y72sj" path="res://assets/scripts/characters/unit_blurb_manager.gd" id="11_swrka"]
+[ext_resource type="Script" uid="uid://dscajrc86dj61" path="res://assets/scripts/ui/enemy_status_ui.gd" id="12_crukj"]
+[ext_resource type="Script" uid="uid://b1js54yamxdfy" path="res://assets/scripts/ui/blurb_ui.gd" id="13_0xk4x"]
+[ext_resource type="Theme" uid="uid://f1m3iqsrknej" path="res://assets/themes/blurbs.tres" id="14_oiu5e"]
+[ext_resource type="Script" uid="uid://cys6y1t45ivgs" path="res://assets/scripts/ui/action_panel.gd" id="17_7eudg"]
+
+[sub_resource type="Resource" id="Resource_snlw1"]
+script = ExtResource("4_mbunu")
+metadata/_custom_type_script = "uid://cqwrec0qyr1d3"
+
+[sub_resource type="Resource" id="Resource_v1jek"]
+script = ExtResource("3_bgvmc")
+metadata/_custom_type_script = "uid://bymprd8xjm1o5"
+
+[sub_resource type="Resource" id="Resource_yvdik"]
+script = ExtResource("4_snlw1")
+metadata/_custom_type_script = "uid://it8c6t6cliud"
+
+[sub_resource type="Resource" id="Resource_kvqtt"]
+script = ExtResource("5_7eudg")
+metadata/_custom_type_script = "uid://owk0iblevl13"
+
+[sub_resource type="Resource" id="Resource_uavwe"]
+script = ExtResource("9_v1jek")
+metadata/_custom_type_script = "uid://der1yy21srki8"
+
+[sub_resource type="Resource" id="Resource_ck1h0"]
+script = ExtResource("8_7eudg")
+metadata/_custom_type_script = "uid://02vp3hdffr4g"
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_s2oqn"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_a1ijr"]
+viewport_path = NodePath("UnitUI")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1jydo"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_a1ijr")
+billboard_mode = 1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fndc5"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_1jydo")
+orientation = 2
+
+[sub_resource type="Resource" id="Resource_edf0t"]
+script = ExtResource("10_o1clw")
+duration = 0.25
+transition = 1
+
+[sub_resource type="Resource" id="Resource_elhta"]
+script = ExtResource("10_o1clw")
+duration = 0.2
+
+[sub_resource type="Resource" id="Resource_fndc5"]
+script = ExtResource("10_o1clw")
+duration = 0.2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_elhta"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edf0t"]
+bg_color = Color(0.98, 0.7787733, 0.22540002, 1)
+
+[node name="wendigo" type="Node" unique_id=1487470758 node_paths=PackedStringArray("status_manager", "turn_cam", "bind_cam", "action_panel", "model") groups=["Unit"]]
+script = ExtResource("1_bgvmc")
+unit_name = "Wendigo"
+status_manager = NodePath("status_manager")
+turn_cam = NodePath("UnitModel3D/turn_cam")
+bind_cam = NodePath("UnitModel3D/MeshInstance3D/bind_cam")
+action_panel = NodePath("CanvasLayer/action_panel")
+base_strength = 7
+base_agility = 8
+base_mind = 6
+base_will = 8
+base_hp = 70
+base_morale = 30
+actions = Array[ExtResource("2_dh3q1")]([SubResource("Resource_snlw1"), SubResource("Resource_v1jek"), SubResource("Resource_yvdik"), SubResource("Resource_kvqtt")])
+binded_actions = Array[ExtResource("2_dh3q1")]([SubResource("Resource_uavwe"), SubResource("Resource_ck1h0")])
+model = NodePath("UnitModel3D")
+
+[node name="status_manager" type="Node" parent="." unique_id=1696254302 node_paths=PackedStringArray("unit")]
+script = ExtResource("7_7s4hc")
+unit = NodePath("..")
+
+[node name="UnitModel3D" type="Node3D" parent="." unique_id=545054185 node_paths=PackedStringArray("mesh", "unit", "crit_cam")]
+script = ExtResource("8_13ji7")
+mesh = NodePath("MeshInstance3D")
+unit = NodePath("..")
+crit_cam = NodePath("MeshInstance3D/crit_cam")
+metadata/_custom_type_script = "uid://bwqj47ja7e5ry"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="UnitModel3D" unique_id=1689327297]
+mesh = SubResource("CapsuleMesh_s2oqn")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="UnitModel3D/MeshInstance3D" unique_id=448269145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3646643, 0)
+mesh = SubResource("PlaneMesh_fndc5")
+skeleton = NodePath("../..")
+
+[node name="crit_cam" type="Node3D" parent="UnitModel3D/MeshInstance3D" unique_id=634752729 node_paths=PackedStringArray("look_at_target")]
+transform = Transform3D(0.5806681, 0.20490241, -0.78793347, 1.4901161e-08, 0.9678098, 0.2516796, 0.8141404, -0.14614224, 0.5619766, -2.4802039, 0.7922201, 1.768952)
+script = ExtResource("9_jqa0e")
+look_at_mode = 2
+look_at_target = NodePath("..")
+tween_resource = SubResource("Resource_edf0t")
+align_transform_with_view = Callable()
+align_rotation_with_view = Callable()
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="bind_cam" type="Node3D" parent="UnitModel3D/MeshInstance3D" unique_id=867642864]
+transform = Transform3D(1, 0, 0, 0, 0.98230034, -0.18731274, 0, 0.18731274, 0.98230034, 0, 1.1451182, 1.998)
+top_level = true
+script = ExtResource("9_jqa0e")
+follow_mode = 3
+look_at_mode = 3
+tween_resource = SubResource("Resource_elhta")
+follow_offset = Vector3(0, 0.8, 1.998)
+look_at_offset = Vector3(10.8, 0, 0)
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="turn_cam" type="Node3D" parent="UnitModel3D" unique_id=853058007 node_paths=PackedStringArray("look_at_target")]
+transform = Transform3D(0.9990159, 0.007082155, -0.043111026, 2.3282384e-10, 0.9867512, 0.16209987, 0.043688696, -0.16194548, 0.9858066, -0.17512226, 1.5734694, 4.004467)
+script = ExtResource("9_jqa0e")
+look_at_mode = 2
+look_at_target = NodePath("../MeshInstance3D")
+tween_resource = SubResource("Resource_fndc5")
+follow_offset = Vector3(0, 1.5, 3.575)
+look_at_offset = Vector3(0, 0.915, 0)
+align_transform_with_view = Callable()
+align_rotation_with_view = Callable()
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="UnitUI" type="SubViewport" parent="." unique_id=2089197297 node_paths=PackedStringArray("unit")]
+transparent_bg = true
+handle_input_locally = false
+script = ExtResource("11_swrka")
+unit = NodePath("..")
+damage_taken_blurbs = Array[String](["Owie"])
+morale_damage_blurbs = Array[String](["3:"])
+
+[node name="enemyStatus" type="CanvasLayer" parent="UnitUI" unique_id=1327650850 node_paths=PackedStringArray("u", "hp_bar", "morale_bar", "name_label", "status_label")]
+script = ExtResource("12_crukj")
+u = NodePath("../..")
+hp_bar = NodePath("VBoxContainer/ProgressBar")
+morale_bar = NodePath("VBoxContainer/ProgressBar2")
+name_label = NodePath("VBoxContainer/name")
+status_label = NodePath("VBoxContainer/status")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UnitUI/enemyStatus" unique_id=1264324401]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="name" type="RichTextLabel" parent="UnitUI/enemyStatus/VBoxContainer" unique_id=137625467]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 75
+fit_content = true
+
+[node name="ProgressBar" type="ProgressBar" parent="UnitUI/enemyStatus/VBoxContainer" unique_id=1696733190]
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_elhta")
+value = 15.81
+
+[node name="ProgressBar2" type="ProgressBar" parent="UnitUI/enemyStatus/VBoxContainer" unique_id=1246856187]
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_edf0t")
+
+[node name="status" type="RichTextLabel" parent="UnitUI/enemyStatus/VBoxContainer" unique_id=1138966622]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+fit_content = true
+
+[node name="BlurbUI" type="CanvasLayer" parent="UnitUI" unique_id=1222574688 node_paths=PackedStringArray("unit", "blurb_box", "label")]
+script = ExtResource("13_0xk4x")
+unit = NodePath("../..")
+blurb_box = NodePath("PanelContainer")
+label = NodePath("PanelContainer/MarginContainer/RichTextLabel")
+
+[node name="PanelContainer" type="PanelContainer" parent="UnitUI/BlurbUI" unique_id=1320387544]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -30.5
+offset_bottom = 30.500122
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("14_oiu5e")
+
+[node name="MarginContainer" type="MarginContainer" parent="UnitUI/BlurbUI/PanelContainer" unique_id=1885993451]
+layout_mode = 2
+theme = ExtResource("14_oiu5e")
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UnitUI/BlurbUI/PanelContainer/MarginContainer" unique_id=876168546]
+layout_mode = 2
+theme = ExtResource("14_oiu5e")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = ":3"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1516927161]
+layer = 15
+
+[node name="action_panel" type="PanelContainer" parent="CanvasLayer" unique_id=1113852765 node_paths=PackedStringArray("action_container", "target_container", "unit")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 102.0
+offset_top = -195.0
+offset_right = 379.0
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("17_7eudg")
+action_container = NodePath("MarginContainer/VBoxContainer/ScrollContainer2/action")
+target_container = NodePath("MarginContainer/VBoxContainer/ScrollContainer/target")
+unit = NodePath("../..")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/action_panel" unique_id=644811188]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/action_panel/MarginContainer" unique_id=1943279984]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/action_panel/MarginContainer/VBoxContainer" unique_id=1189078296]
+layout_mode = 2
+bbcode_enabled = true
+text = "[b] CHOOSE AN ACTION"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="CanvasLayer/action_panel/MarginContainer/VBoxContainer" unique_id=46791664]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="action" type="VBoxContainer" parent="CanvasLayer/action_panel/MarginContainer/VBoxContainer/ScrollContainer2" unique_id=1946025310]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/action_panel/MarginContainer/VBoxContainer" unique_id=2071299767]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="target" type="VBoxContainer" parent="CanvasLayer/action_panel/MarginContainer/VBoxContainer/ScrollContainer" unique_id=1947531893]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

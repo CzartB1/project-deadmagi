@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://blf0ha5b4nxqh"]
+
+[ext_resource type="Texture2D" uid="uid://dvpxqgkw16id1" path="res://assets/sprites/ui/ui_pack/boxflat.png" id="1_cke0x"]
+[ext_resource type="Script" uid="uid://cxbmxvwga7c4x" path="res://assets/scripts/ui/unit_preview_entry.gd" id="1_vka5w"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4yow6"]
+texture = ExtResource("1_cke0x")
+texture_margin_left = 30.0
+texture_margin_top = 36.0
+texture_margin_right = 22.0
+texture_margin_bottom = 36.0
+modulate_color = Color(0.45, 0.45, 0.45, 1)
+
+[node name="UnitPreviewEntry" type="PanelContainer" node_paths=PackedStringArray("name_edit", "ally_toggle", "remove_button")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_4yow6")
+script = ExtResource("1_vka5w")
+name_edit = NodePath("MarginContainer/HBoxContainer/LineEdit")
+ally_toggle = NodePath("MarginContainer/HBoxContainer/CheckBox")
+remove_button = NodePath("MarginContainer/HBoxContainer/Button")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 2
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+button_pressed = true
+text = "Is ally"
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Remove"

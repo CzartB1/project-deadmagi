@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dbbiklpaueb1k"]
+
+[ext_resource type="Script" uid="uid://cys6y1t45ivgs" path="res://assets/scripts/ui/action_panel.gd" id="1_lg0xt"]
+
+[node name="action_panel" type="PanelContainer" unique_id=438991143 node_paths=PackedStringArray("action_container", "target_container")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 102.0
+offset_top = -195.0
+offset_right = 379.0
+offset_bottom = 207.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lg0xt")
+action_container = NodePath("MarginContainer/VBoxContainer/ScrollContainer2/action")
+target_container = NodePath("MarginContainer/VBoxContainer/ScrollContainer/target")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=23795712]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=50625372]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=1230776065]
+layout_mode = 2
+bbcode_enabled = true
+text = "[b] CHOOSE AN ACTION"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="MarginContainer/VBoxContainer" unique_id=880342774]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="action" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer2" unique_id=1575937268]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer" unique_id=1161331644]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="target" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer" unique_id=134482252]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

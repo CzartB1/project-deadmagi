@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://68w7f4mfn2q8"]
+
+[ext_resource type="Script" uid="uid://bwqj47ja7e5ry" path="res://assets/scripts/characters/unit_model_3d.gd" id="1_ebjbw"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ebjbw"]
+
+[node name="UnitModel3d" type="Node3D"]
+script = ExtResource("1_ebjbw")
+metadata/_custom_type_script = "uid://bwqj47ja7e5ry"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_ebjbw")

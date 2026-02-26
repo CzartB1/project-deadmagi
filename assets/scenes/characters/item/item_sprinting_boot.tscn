@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://batopa088ppyw"]
+
+[ext_resource type="Script" uid="uid://cb1dpcjaxn1ds" path="res://assets/scripts/characters/items/item_node.gd" id="1_1ywyq"]
+
+[node name="SprintingBoot" type="Node" unique_id=1725675144]
+script = ExtResource("1_1ywyq")
+item_name = "Sprinting boots"
+description = "ccc"
+agility_bonus = 2
+metadata/_custom_type_script = "uid://cb1dpcjaxn1ds"

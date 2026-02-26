@@ -1,0 +1,235 @@
+[gd_scene format=3 uid="uid://bx7mawr53wbgb"]
+
+[ext_resource type="Script" uid="uid://cc4pnlomrjhl7" path="res://assets/scripts/characters/unit.gd" id="1_lqqq1"]
+[ext_resource type="Script" uid="uid://dlin7q6rpwhj" path="res://assets/scripts/characters/actions/action.gd" id="2_7pngt"]
+[ext_resource type="Script" uid="uid://c6x43yb7jqfwa" path="res://assets/scripts/characters/actions/attack.gd" id="3_vbj7g"]
+[ext_resource type="Script" uid="uid://cqwrec0qyr1d3" path="res://assets/scripts/characters/actions/bind_actions/initiate_bind.gd" id="4_uo1gj"]
+[ext_resource type="Script" uid="uid://x8f43cmsm45k" path="res://assets/scripts/characters/actions/bind_actions/struggle_for_dominance.gd" id="5_f0nt8"]
+[ext_resource type="Script" uid="uid://emkbcm62ka8a" path="res://assets/scripts/characters/actions/bind_actions/escape_bind.gd" id="6_s2oqn"]
+[ext_resource type="Script" uid="uid://gvgb7vu5x5mo" path="res://assets/scripts/characters/status_effect_manager.gd" id="7_f0nt8"]
+[ext_resource type="Script" uid="uid://bwqj47ja7e5ry" path="res://assets/scripts/characters/unit_model_3d.gd" id="8_s2oqn"]
+[ext_resource type="Script" uid="uid://blah3tn0y72sj" path="res://assets/scripts/characters/unit_blurb_manager.gd" id="9_a1ijr"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="9_fndc5"]
+[ext_resource type="Script" uid="uid://b1js54yamxdfy" path="res://assets/scripts/ui/blurb_ui.gd" id="9_jwyoo"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="10_elhta"]
+[ext_resource type="Script" uid="uid://dscajrc86dj61" path="res://assets/scripts/ui/enemy_status_ui.gd" id="12_elhta"]
+[ext_resource type="Theme" uid="uid://f1m3iqsrknej" path="res://assets/themes/blurbs.tres" id="14_edf0t"]
+[ext_resource type="PackedScene" uid="uid://dbbiklpaueb1k" path="res://assets/scenes/ui/unit_action_panel.tscn" id="15_0kbdm"]
+
+[sub_resource type="Resource" id="Resource_7c61l"]
+script = ExtResource("3_vbj7g")
+metadata/_custom_type_script = "uid://c6x43yb7jqfwa"
+
+[sub_resource type="Resource" id="Resource_jwyoo"]
+script = ExtResource("4_uo1gj")
+metadata/_custom_type_script = "uid://cqwrec0qyr1d3"
+
+[sub_resource type="Resource" id="Resource_a1ijr"]
+script = ExtResource("5_f0nt8")
+metadata/_custom_type_script = "uid://x8f43cmsm45k"
+
+[sub_resource type="Resource" id="Resource_1jydo"]
+script = ExtResource("6_s2oqn")
+metadata/_custom_type_script = "uid://emkbcm62ka8a"
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_s2oqn"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_a1ijr"]
+viewport_path = NodePath("UnitUI")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1jydo"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_a1ijr")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fndc5"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_1jydo")
+orientation = 2
+
+[sub_resource type="Resource" id="Resource_edf0t"]
+script = ExtResource("10_elhta")
+duration = 0.25
+transition = 1
+
+[sub_resource type="Resource" id="Resource_elhta"]
+script = ExtResource("10_elhta")
+duration = 0.2
+
+[sub_resource type="Resource" id="Resource_fndc5"]
+script = ExtResource("10_elhta")
+duration = 0.2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_elhta"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edf0t"]
+bg_color = Color(0.98, 0.7787733, 0.22540002, 1)
+
+[node name="unit" type="Node" unique_id=1487470758 node_paths=PackedStringArray("status_manager", "turn_cam", "bind_cam", "action_panel", "model") groups=["Unit"]]
+script = ExtResource("1_lqqq1")
+status_manager = NodePath("status_manager")
+turn_cam = NodePath("UnitModel3D/turn_cam")
+bind_cam = NodePath("UnitModel3D/MeshInstance3D/bind_cam")
+action_panel = NodePath("CanvasLayer/action_panel")
+actions = Array[ExtResource("2_7pngt")]([SubResource("Resource_7c61l"), SubResource("Resource_jwyoo")])
+binded_actions = Array[ExtResource("2_7pngt")]([SubResource("Resource_a1ijr"), SubResource("Resource_1jydo")])
+model = NodePath("UnitModel3D")
+
+[node name="status_manager" type="Node" parent="." unique_id=1696254302 node_paths=PackedStringArray("unit")]
+script = ExtResource("7_f0nt8")
+unit = NodePath("..")
+
+[node name="UnitModel3D" type="Node3D" parent="." unique_id=545054185 node_paths=PackedStringArray("mesh", "unit", "crit_cam")]
+script = ExtResource("8_s2oqn")
+mesh = NodePath("MeshInstance3D")
+unit = NodePath("..")
+crit_cam = NodePath("MeshInstance3D/crit_cam")
+metadata/_custom_type_script = "uid://bwqj47ja7e5ry"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="UnitModel3D" unique_id=1689327297]
+mesh = SubResource("CapsuleMesh_s2oqn")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="UnitModel3D/MeshInstance3D" unique_id=448269145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3388722, 0)
+mesh = SubResource("PlaneMesh_fndc5")
+skeleton = NodePath("../..")
+
+[node name="crit_cam" type="Node3D" parent="UnitModel3D/MeshInstance3D" unique_id=634752729 node_paths=PackedStringArray("look_at_target")]
+transform = Transform3D(0.5806681, 0.20490238, -0.78793347, 1.4901161e-08, 0.9678097, 0.2516796, 0.8141404, -0.14614223, 0.5619766, -2.4802039, 0.7922201, 1.768952)
+script = ExtResource("9_fndc5")
+look_at_mode = 2
+look_at_target = NodePath("..")
+tween_resource = SubResource("Resource_edf0t")
+align_transform_with_view = Callable()
+align_rotation_with_view = Callable()
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="bind_cam" type="Node3D" parent="UnitModel3D/MeshInstance3D" unique_id=867642864]
+transform = Transform3D(1, 0, 0, 0, 0.98230034, -0.18731274, 0, 0.18731274, 0.98230034, 0, 1.1451182, 1.998)
+top_level = true
+script = ExtResource("9_fndc5")
+follow_mode = 3
+look_at_mode = 3
+tween_resource = SubResource("Resource_elhta")
+follow_offset = Vector3(0, 0.8, 1.998)
+look_at_offset = Vector3(10.8, 0, 0)
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="turn_cam" type="Node3D" parent="UnitModel3D" unique_id=853058007 node_paths=PackedStringArray("look_at_target")]
+transform = Transform3D(0.8784582, 0.0395007, -0.47612256, 1.8625889e-09, 0.9965525, 0.08267703, 0.477756, -0.072630614, 0.87545484, -1.5138073, 1.1778674, 2.783464)
+script = ExtResource("9_fndc5")
+look_at_mode = 2
+look_at_target = NodePath("../MeshInstance3D")
+tween_resource = SubResource("Resource_fndc5")
+follow_offset = Vector3(0, 1.5, 3.575)
+look_at_offset = Vector3(0, 0.915, 0)
+align_transform_with_view = Callable()
+align_rotation_with_view = Callable()
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="UnitUI" type="SubViewport" parent="." unique_id=2089197297 node_paths=PackedStringArray("unit")]
+transparent_bg = true
+handle_input_locally = false
+script = ExtResource("9_a1ijr")
+unit = NodePath("..")
+damage_taken_blurbs = Array[String](["Owie"])
+morale_damage_blurbs = Array[String](["3:"])
+
+[node name="unitStatus" type="CanvasLayer" parent="UnitUI" unique_id=1327650850 node_paths=PackedStringArray("u", "hp_bar", "morale_bar", "name_label", "status_label")]
+script = ExtResource("12_elhta")
+u = NodePath("../..")
+hp_bar = NodePath("VBoxContainer/ProgressBar")
+morale_bar = NodePath("VBoxContainer/ProgressBar2")
+name_label = NodePath("VBoxContainer2/name")
+status_label = NodePath("VBoxContainer2/status")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UnitUI/unitStatus" unique_id=1106330716]
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = -12.0
+offset_bottom = 80.0
+grow_horizontal = 2
+
+[node name="name" type="RichTextLabel" parent="UnitUI/unitStatus/VBoxContainer2" unique_id=137625467]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 75
+text = "aaaa"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="status" type="RichTextLabel" parent="UnitUI/unitStatus/VBoxContainer2" unique_id=1138966622]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+fit_content = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UnitUI/unitStatus" unique_id=1264324401]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 269.0
+offset_right = -112.0
+offset_bottom = 323.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+
+[node name="ProgressBar" type="ProgressBar" parent="UnitUI/unitStatus/VBoxContainer" unique_id=1696733190]
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_elhta")
+value = 14.62
+
+[node name="ProgressBar2" type="ProgressBar" parent="UnitUI/unitStatus/VBoxContainer" unique_id=1246856187]
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_edf0t")
+
+[node name="BlurbUI" type="CanvasLayer" parent="UnitUI" unique_id=1222574688 node_paths=PackedStringArray("unit", "blurb_box", "label")]
+visible = false
+script = ExtResource("9_jwyoo")
+unit = NodePath("../..")
+blurb_box = NodePath("PanelContainer")
+label = NodePath("PanelContainer/MarginContainer/RichTextLabel")
+
+[node name="PanelContainer" type="PanelContainer" parent="UnitUI/BlurbUI" unique_id=1320387544]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -255.72
+offset_bottom = -122.72
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("14_edf0t")
+
+[node name="MarginContainer" type="MarginContainer" parent="UnitUI/BlurbUI/PanelContainer" unique_id=1885993451]
+layout_mode = 2
+theme = ExtResource("14_edf0t")
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UnitUI/BlurbUI/PanelContainer/MarginContainer" unique_id=876168546]
+layout_mode = 2
+theme = ExtResource("14_edf0t")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = ":3"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1404806774]
+layer = 15
+
+[node name="action_panel" parent="CanvasLayer" unique_id=438991143 node_paths=PackedStringArray("unit") instance=ExtResource("15_0kbdm")]
+unit = NodePath("../..")

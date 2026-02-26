@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://divhljgvag51f"]
+
+[ext_resource type="Script" uid="uid://cxxbbyxddaana" path="res://assets/scripts/ui/turn_order_item.gd" id="1_n15sb"]
+[ext_resource type="Texture2D" uid="uid://cteyo3iceank8" path="res://assets/sprites/ui/ui_pack/mini_base.png" id="2_ebyjf"]
+[ext_resource type="FontFile" uid="uid://bvbd78vlihutq" path="res://assets/fonts/Font Negra.ttf" id="3_n4gob"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n4gob"]
+texture = ExtResource("2_ebyjf")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n4gob"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_44ygw"]
+bg_color = Color(1, 0.7166667, 0, 1)
+
+[node name="TurnOrderItem" type="Control" unique_id=1971322298 node_paths=PackedStringArray("name_label", "background", "highlight", "hp_bar", "morale_bar")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n15sb")
+name_label = NodePath("ColorRect/MarginContainer/VBoxContainer/RichTextLabel")
+background = NodePath("ColorRect")
+highlight = NodePath("highlight")
+hp_bar = NodePath("ColorRect/VBoxContainer/hp")
+morale_bar = NodePath("ColorRect/VBoxContainer/morale")
+ally_color = Color(0, 0.48, 0.96, 1)
+enemy_color = Color(0.93, 0.43400005, 0, 1)
+
+[node name="highlight" type="PanelContainer" parent="." unique_id=432770974]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_n4gob")
+
+[node name="ColorRect" type="PanelContainer" parent="." unique_id=1030724970]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_n4gob")
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect" unique_id=1918299950]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer" unique_id=1717523886]
+layout_mode = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/MarginContainer/VBoxContainer" unique_id=1184625378]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_n4gob")
+text = "asdsdasd"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=1304594078]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 2
+
+[node name="hp" type="ProgressBar" parent="ColorRect/VBoxContainer" unique_id=487434008]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/fill = SubResource("StyleBoxFlat_n4gob")
+value = 13.19
+show_percentage = false
+
+[node name="morale" type="ProgressBar" parent="ColorRect/VBoxContainer" unique_id=1976793132]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/fill = SubResource("StyleBoxFlat_44ygw")
+show_percentage = false
