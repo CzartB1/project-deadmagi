@@ -54,6 +54,8 @@
 [ext_resource type="Script" uid="uid://cb1dpcjaxn1ds" path="res://assets/scripts/characters/items/item_node.gd" id="34_xggyn"]
 [ext_resource type="Script" uid="uid://dri0m1wb6tllv" path="res://assets/scripts/system/map/zone_data.gd" id="35_6qj5q"]
 [ext_resource type="Script" uid="uid://b0yq7vai8nfem" path="res://assets/scripts/ui/map_ui.gd" id="36_mitq2"]
+[ext_resource type="Script" uid="uid://dup708md5f6em" path="res://assets/scripts/system/economy_manager.gd" id="36_uvvnk"]
+[ext_resource type="Script" uid="uid://dhewgcp7xx0bv" path="res://assets/scripts/ui/shop_ui.gd" id="52_xggyn"]
 [ext_resource type="Script" uid="uid://djbveekbkou0g" path="res://assets/scripts/system/party_manager.gd" id="55_13gbe"]
 [ext_resource type="Script" uid="uid://tvykafvvlk2f" path="res://assets/scripts/system/notification_manager.gd" id="55_ifaoj"]
 [ext_resource type="PackedScene" uid="uid://bcw4qk5nx7kdm" path="res://assets/scenes/ui/party_menu_unit_panel.tscn" id="56_5nt7y"]
@@ -5870,6 +5872,9 @@ zone_tiers = Array[ExtResource("9_fs8x0")]([SubResource("Resource_8aojl"), SubRe
 difficulty_label = NodePath("../../CanvasLayer/map_ui/difficulty_label")
 item_screen = NodePath("../../CanvasLayer2/item_equip_menu")
 
+[node name="economy_manager" type="Node2D" parent="event_manager" unique_id=511725130]
+script = ExtResource("36_uvvnk")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=632272033]
 
 [node name="battle_ui" type="Control" parent="CanvasLayer" unique_id=361094106]
@@ -6084,25 +6089,28 @@ layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="event_node" type="Button" parent="CanvasLayer/map_ui/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1293235629 node_paths=PackedStringArray("map_ui")]
+[node name="event_node" type="Button" parent="CanvasLayer/map_ui/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1293235629 node_paths=PackedStringArray("shop_ui", "map_ui")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("7_48cn3")
+shop_ui = NodePath("../../../../../../../ShopUI")
 map_ui = NodePath("../../../../../..")
 
-[node name="event_node2" type="Button" parent="CanvasLayer/map_ui/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=214781970 node_paths=PackedStringArray("map_ui")]
+[node name="event_node2" type="Button" parent="CanvasLayer/map_ui/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=214781970 node_paths=PackedStringArray("shop_ui", "map_ui")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("7_48cn3")
+shop_ui = NodePath("../../../../../../../ShopUI")
 map_ui = NodePath("../../../../../..")
 
-[node name="event_node3" type="Button" parent="CanvasLayer/map_ui/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1122909241 node_paths=PackedStringArray("map_ui")]
+[node name="event_node3" type="Button" parent="CanvasLayer/map_ui/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1122909241 node_paths=PackedStringArray("shop_ui", "map_ui")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("7_48cn3")
+shop_ui = NodePath("../../../../../../../ShopUI")
 map_ui = NodePath("../../../../../..")
 
 [node name="landmark" type="VBoxContainer" parent="CanvasLayer/map_ui/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=838964635]
@@ -6161,27 +6169,30 @@ layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="event_node" type="Button" parent="CanvasLayer/map_ui/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer3" unique_id=762157723 node_paths=PackedStringArray("before_node", "map_ui")]
+[node name="event_node" type="Button" parent="CanvasLayer/map_ui/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer3" unique_id=762157723 node_paths=PackedStringArray("shop_ui", "before_node", "map_ui")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("7_48cn3")
+shop_ui = NodePath("../../../../../../../ShopUI")
 before_node = [NodePath("../../landmark/landmark"), NodePath("../../landmark/landmark2")]
 map_ui = NodePath("../../../../../..")
 
-[node name="event_node2" type="Button" parent="CanvasLayer/map_ui/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer3" unique_id=1449765830 node_paths=PackedStringArray("before_node", "map_ui")]
+[node name="event_node2" type="Button" parent="CanvasLayer/map_ui/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer3" unique_id=1449765830 node_paths=PackedStringArray("shop_ui", "before_node", "map_ui")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("7_48cn3")
+shop_ui = NodePath("../../../../../../../ShopUI")
 before_node = [NodePath("../../landmark/landmark"), NodePath("../../landmark/landmark2"), NodePath("../../landmark/landmark3")]
 map_ui = NodePath("../../../../../..")
 
-[node name="event_node3" type="Button" parent="CanvasLayer/map_ui/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer3" unique_id=1226439503 node_paths=PackedStringArray("before_node", "map_ui")]
+[node name="event_node3" type="Button" parent="CanvasLayer/map_ui/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer3" unique_id=1226439503 node_paths=PackedStringArray("shop_ui", "before_node", "map_ui")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("7_48cn3")
+shop_ui = NodePath("../../../../../../../ShopUI")
 before_node = [NodePath("../../landmark/landmark2"), NodePath("../../landmark/landmark3")]
 map_ui = NodePath("../../../../../..")
 
@@ -6241,27 +6252,30 @@ layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="event_node3" type="Button" parent="CanvasLayer/map_ui/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer4" unique_id=716583433 node_paths=PackedStringArray("before_node", "map_ui")]
+[node name="event_node3" type="Button" parent="CanvasLayer/map_ui/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer4" unique_id=716583433 node_paths=PackedStringArray("shop_ui", "before_node", "map_ui")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("7_48cn3")
+shop_ui = NodePath("../../../../../../../ShopUI")
 before_node = [NodePath("../../landmark2/landmark3"), NodePath("../../landmark2/landmark4")]
 map_ui = NodePath("../../../../../..")
 
-[node name="event_node4" type="Button" parent="CanvasLayer/map_ui/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer4" unique_id=290914376 node_paths=PackedStringArray("before_node", "map_ui")]
+[node name="event_node4" type="Button" parent="CanvasLayer/map_ui/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer4" unique_id=290914376 node_paths=PackedStringArray("shop_ui", "before_node", "map_ui")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("7_48cn3")
+shop_ui = NodePath("../../../../../../../ShopUI")
 before_node = [NodePath("../../landmark2/landmark3"), NodePath("../../landmark2/landmark4"), NodePath("../../landmark2/landmark5")]
 map_ui = NodePath("../../../../../..")
 
-[node name="event_node5" type="Button" parent="CanvasLayer/map_ui/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer4" unique_id=812623664 node_paths=PackedStringArray("before_node", "map_ui")]
+[node name="event_node5" type="Button" parent="CanvasLayer/map_ui/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer4" unique_id=812623664 node_paths=PackedStringArray("shop_ui", "before_node", "map_ui")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("7_48cn3")
+shop_ui = NodePath("../../../../../../../ShopUI")
 before_node = [NodePath("../../landmark2/landmark4"), NodePath("../../landmark2/landmark5")]
 map_ui = NodePath("../../../../../..")
 
@@ -6475,6 +6489,78 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Skip"
 
+[node name="ShopUI" type="Control" parent="CanvasLayer" unique_id=1104253906 node_paths=PackedStringArray("item_list_container", "reroll_button", "gold_label", "close_button", "economy_manager", "diff_manager")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("52_xggyn")
+item_list_container = NodePath("PanelContainer/MarginContainer/VBoxContainer/item_list")
+reroll_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/reroll")
+gold_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/gold")
+close_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/close")
+economy_manager = NodePath("../../event_manager/economy_manager")
+diff_manager = NodePath("../../event_manager/difficulty_manager")
+metadata/_custom_type_script = "uid://dhewgcp7xx0bv"
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/ShopUI" unique_id=609686342]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/ShopUI/PanelContainer" unique_id=2002969900]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ShopUI/PanelContainer/MarginContainer" unique_id=633158795]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ShopUI/PanelContainer/MarginContainer/VBoxContainer" unique_id=1359528608]
+layout_mode = 2
+size_flags_stretch_ratio = 0.2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/ShopUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2088264008]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "[b]SHOP"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="gold" type="RichTextLabel" parent="CanvasLayer/ShopUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2033495662]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.15
+bbcode_enabled = true
+text = "gold"
+fit_content = true
+vertical_alignment = 1
+
+[node name="item_list" type="VBoxContainer" parent="CanvasLayer/ShopUI/PanelContainer/MarginContainer/VBoxContainer" unique_id=1798027279]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/ShopUI/PanelContainer/MarginContainer/VBoxContainer" unique_id=2002485128]
+layout_mode = 2
+
+[node name="reroll" type="Button" parent="CanvasLayer/ShopUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1830023418]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Reroll"
+
+[node name="close" type="Button" parent="CanvasLayer/ShopUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=147228128]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Close"
+
 [node name="3D_world" type="Node3D" parent="." unique_id=1106690648]
 
 [node name="Node3D" type="Node3D" parent="3D_world" unique_id=1736856054]
@@ -6526,7 +6612,7 @@ environment = SubResource("Environment_kxv8u")
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=405904024]
 layer = 10
 
-[node name="item_equip_menu" type="Control" parent="CanvasLayer2" unique_id=1897117217 node_paths=PackedStringArray("unit_list_container", "title_label", "desc_label", "cancel_button")]
+[node name="item_equip_menu" type="Control" parent="CanvasLayer2" unique_id=1897117217 node_paths=PackedStringArray("unit_list_container", "title_label", "desc_label", "skip_button", "economy_manager")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -6539,7 +6625,8 @@ unit_row_scene = ExtResource("23_jbgu6")
 unit_list_container = NodePath("Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer")
 title_label = NodePath("Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/title")
 desc_label = NodePath("Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/Description")
-cancel_button = NodePath("Panel/MarginContainer/VBoxContainer/cancel")
+skip_button = NodePath("Panel/MarginContainer/VBoxContainer/cancel")
+economy_manager = NodePath("../../event_manager/economy_manager")
 
 [node name="Panel" type="Panel" parent="CanvasLayer2/item_equip_menu" unique_id=1404830054]
 layout_mode = 1

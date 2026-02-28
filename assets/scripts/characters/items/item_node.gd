@@ -5,6 +5,7 @@ extends Node
 @export var description: String
 @export var slot_cost: int = 1
 @export var priority: int = 0
+@export var base_price: int = 50
 
 # Optional stat modifiers
 @export var strength_bonus := 0

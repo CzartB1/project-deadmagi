@@ -2,6 +2,7 @@ extends Node
 class_name BattleManager
 
 @export var event_manager: EventManager
+@export var economy_manager: EconomyManager  # add this line
 @export var turn_delay: float = 1.0
 @export var allies: Array[Unit] = []
 @export var enemies: Array[Unit] = []
@@ -191,11 +192,13 @@ func _on_battle_won():
 	print("BATTLE WON")
 	_distribute_xp()
 	if event_manager.current_event is EventNode:
-		if !item_drops.is_empty(): 
-			event_manager.diff_manager.give_party_random_item(item_drops)
-		else: event_manager.diff_manager.give_party_random_item()
+		if not item_drops.is_empty():
+			event_manager.diff_manager.give_party_random_item(item_drops, _last_encounter_type)
+		else:
+			event_manager.diff_manager.give_party_random_item([], _last_encounter_type)
 		victory_screen.visible = true
-	elif event_manager.current_event is BossNode:zone_end_screen.visible = true
+	elif event_manager.current_event is BossNode:
+		zone_end_screen.visible = true
 
 func _on_battle_lost():
 	print("BATTLE LOST")

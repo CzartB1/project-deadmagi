@@ -33,6 +33,7 @@ var _current_tier: int = 0
 
 @export var difficulty_label: RichTextLabel
 @export var item_screen: ItemEquipMenu
+@export var economy_manager: EconomyManager
 
 ## =========================
 ## RUNTIME STATE
@@ -172,6 +173,44 @@ func get_encounter(type: EncounterType, context := {}) -> Variant:
 			push_error("DifficultyManager: Unknown EncounterType.")
 			return null
 
+## =========================
+## SHOP QUERIES
+## =========================
+
+## Returns a randomized stock of items for the shop.
+## Uses a weighted random difficulty offset (0–5, biased toward 0).
+## stock_size: how many items to generate.
+func get_shop_stock(stock_size: int = 4) -> Array:
+	var stock := []
+	var offset = economy_manager.roll_shop_offset() if economy_manager else 0
+	var stages := _current_zone.get_stages()
+
+	for i in stock_size:
+		var target_index = clamp(_current_difficulty + offset, 0, stages.size() - 1)
+		var stage := stages[target_index]
+
+		if stage == null or stage.item_pools.is_empty():
+			continue
+
+		var item_scene: PackedScene = stage.item_pools.pick_random()
+		if item_scene:
+			stock.append({
+				"scene": item_scene,
+				"offset": offset,
+				"price": _calculate_shop_price(item_scene, offset)
+			})
+
+	print("[difficulty] shop stock generated with offset +%d (%d items)" % [offset, stock.size()])
+	return stock
+
+
+func _calculate_shop_price(item_scene: PackedScene, offset: int) -> int:
+	if not economy_manager:
+		return 50
+	var temp := item_scene.instantiate()
+	var price := economy_manager.calculate_price(temp, _current_difficulty, offset)
+	temp.free()
+	return price
 
 ## =========================
 ## INTERNAL LOGIC
@@ -256,8 +295,8 @@ func _get_item_random(item_pool := []) -> PackedScene:
 		var pool = item_pool.pick_random()
 		return pool
 
-func give_party_random_item(pool := []):
-	item_screen.open(_get_item_random(pool))
+func give_party_random_item(pool: Array = [], encounter_type: DifficultyManager.EncounterType = DifficultyManager.EncounterType.NORMAL):
+	item_screen.open(_get_item_random(pool), encounter_type)
 
 func _get_unit_random() -> PackedScene:
 	return get_current_stage().recruit_pool.pick_random()
