@@ -59,6 +59,7 @@
 [ext_resource type="Script" uid="uid://tvykafvvlk2f" path="res://assets/scripts/system/notification_manager.gd" id="55_ifaoj"]
 [ext_resource type="PackedScene" uid="uid://bcw4qk5nx7kdm" path="res://assets/scenes/ui/party_menu_unit_panel.tscn" id="56_5nt7y"]
 [ext_resource type="PackedScene" uid="uid://elcmhrjo0qwf" path="res://assets/scenes/ui/party_menu_formation_card.tscn" id="57_j4ihc"]
+[ext_resource type="PackedScene" uid="uid://c2uc5xpluc75m" path="res://assets/scenes/ui/menu/windows/pause_menu.tscn" id="59_uvvnk"]
 
 [sub_resource type="Resource" id="Resource_p5d64"]
 script = ExtResource("8_6rsl6")
@@ -6775,6 +6776,10 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
+
+[node name="PauseMenu" parent="CanvasLayer2" unique_id=156357199 instance=ExtResource("59_uvvnk")]
+visible = false
+main_menu_scene_path = "uid://btmb0tsu3ht3y"
 
 [node name="NotificationManager" type="CanvasLayer" parent="." unique_id=1625960706 node_paths=PackedStringArray("priority_container", "history_container", "history_panel") groups=["Notification"]]
 script = ExtResource("55_ifaoj")

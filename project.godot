@@ -15,10 +15,14 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="project_deadmage"
-run/main_scene="uid://lvxjo1udkei0"
+run/main_scene="uid://dypdlp6r05m6v"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://dx2okqo0jny8q"
 
 [autoload]
 
@@ -29,6 +33,10 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 BlurbDirector="*res://assets/scripts/system/blurb_director.gd"
 PhantomCameraManager="*uid://duq6jhf6unyis"
 ItemDatabase="*uid://cndybe5ffjsc8"
+AppConfig="*uid://cjke6crjg14a0"
+SceneLoader="*uid://cbwmrnp0af35y"
+ProjectMusicController="*uid://r5t485lr3p7t"
+ProjectUISoundController="*uid://cc37235kj4384"
 
 [display]
 
@@ -36,7 +44,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/script-ide/plugin.cfg")
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/maaacks_menus_template/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
 [global_group]
 
@@ -157,7 +165,15 @@ party_menu_toggle={
 
 [internationalization]
 
+locale/translations=PackedStringArray("res://addons/maaacks_menus_template/base/translations/menus_translations.en.translation", "res://addons/maaacks_menus_template/base/translations/menus_translations.fr.translation")
 locale/translations_pot_files=PackedStringArray("res://assets/dialogues/test_dialogue.dialogue", "res://assets/dialogues/find_corpse.dialogue")
+
+[maaacks_menus_template]
+
+disable_install_audio_busses=true
+disable_update_check=false
+disable_install_wizard=true
+copy_path="res://assets/scenes/ui/menu/"
 
 [rendering]
 
