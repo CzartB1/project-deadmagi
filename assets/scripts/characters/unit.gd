@@ -216,7 +216,7 @@ func take_turn(allies: Array, enemies: Array):
 
 func receive_damage(amount:int, dominance_loss:bool=true, redirected:bool=false):
 	#Redirected is basically to tell the receiver to not redirect it again.
-	if !alive or god_mode: return
+	if !alive or god_mode or status_manager.try_barrier(): return
 	if protector and !bind_target and !redirected:
 		protector.receive_damage(amount, dominance_loss, true)
 		protector_timer -= 1
@@ -263,7 +263,7 @@ func receive_damage(amount:int, dominance_loss:bool=true, redirected:bool=false)
 	queue_free()
 
 func receive_morale_damage(amount: int):
-	var mult:int=1
+	var mult:int=status_manager.get_terror_multiplier()
 	if god_mode: return
 	if current_hp<(max_hp*0.5): mult+=1
 	if current_morale_state==morale_state.shaken: mult+=1
