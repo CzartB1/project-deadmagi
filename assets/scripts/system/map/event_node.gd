@@ -2,7 +2,7 @@ class_name EventNode
 extends MapNode
 
 @export var length: int = 3
-@export var shop_ui: ShopUI  # assign in inspector
+@export var shop_ui: ShopUI
 
 var events: Array[Event]
 var current_event: Event
@@ -11,19 +11,12 @@ var cur_d: Node
 
 func _ready():
 	super._ready()
+	# Events are now assigned externally by EventManager during zone setup.
+	# We size the array here with safe battle defaults until EventManager fills them in.
 	events.resize(length)
 	for i in range(length):
 		var e = Event.new()
-		var r = randi_range(0, 2)
-		if r == 0:
-			e.type = Event.eventType.battle
-			text = text + "[B]"
-		elif r == 1:
-			e.type = Event.eventType.random
-			text = text + "[R]"
-		elif r == 2:
-			e.type = Event.eventType.shop
-			text = text + "[S]"
+		e.type = Event.eventType.battle
 		events[i] = e
 
 func _pressed():
@@ -31,9 +24,17 @@ func _pressed():
 	do_event()
 
 func do_event():
+	if cur_ev_id >= events.size():
+		complete()
+		return
+
 	match events[cur_ev_id].type:
 		Event.eventType.battle:
 			manager.start_battle()
+			manager.battle_manager.battle_ended.connect(next_event, CONNECT_ONE_SHOT)
+
+		Event.eventType.elite:
+			manager.start_battle(false, 0, false, DifficultyManager.EncounterType.ELITE)
 			manager.battle_manager.battle_ended.connect(next_event, CONNECT_ONE_SHOT)
 
 		Event.eventType.shop:
@@ -55,7 +56,6 @@ func _open_shop() -> void:
 		push_warning("EventNode: shop_ui not assigned, skipping shop event.")
 		next_event()
 		return
-
 	shop_ui.open()
 	if not shop_ui.shop_closed.is_connected(_on_shop_closed):
 		shop_ui.shop_closed.connect(_on_shop_closed, CONNECT_ONE_SHOT)

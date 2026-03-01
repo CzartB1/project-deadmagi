@@ -26,6 +26,7 @@ func setup(u: Unit):
 	#print("sdgnjo")
 	unit = u
 	name_label.text = u.unit_name
+	#if u.is_ally: name_label.text = name_label.text+"\n["+str(u.current_level)+"]"
 	#if u.has_method("get_icon"):
 		#icon.texture = u.get_icon()
 

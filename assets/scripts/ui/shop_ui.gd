@@ -51,10 +51,12 @@ func open() -> void:
 	_generate_stock()
 	_refresh_gold_label()
 	_refresh_reroll_button()
+	z_index=10
 
 func close() -> void:
 	visible = false
 	shop_closed.emit()
+	z_index=0
 
 ## =========================
 ## STOCK
@@ -66,9 +68,7 @@ func _generate_stock() -> void:
 
 func _rebuild_item_list() -> void:
 	for child in item_list_container.get_children():
-		child.queue_free()
-
-	await get_tree().process_frame
+		child.free()
 
 	if _current_stock.is_empty():
 		var empty_label := RichTextLabel.new()

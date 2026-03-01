@@ -6,5 +6,6 @@ class_name Event
 enum eventType{
 	battle,
 	random,
-	shop
+	shop,
+	elite
 }

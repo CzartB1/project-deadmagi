@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dpagvo87rcrl0" path="res://assets/scripts/battle_manager.gd" id="1_mr7gh"]
 [ext_resource type="Script" uid="uid://drtur50p1ud1j" path="res://assets/scripts/system/map/event_manager.gd" id="1_ua5jh"]
 [ext_resource type="Script" uid="uid://dbs4435dsf3ry" path="res://addons/dialogue_manager/dialogue_resource.gd" id="2_ahyqc"]
-[ext_resource type="Resource" uid="uid://jhom8f2ep64x" path="res://assets/dialogues/test_dialogue.dialogue" id="3_t7a27"]
 [ext_resource type="PackedScene" uid="uid://bx7mawr53wbgb" path="res://assets/scenes/characters/unit.tscn" id="4_sfrgt"]
 [ext_resource type="Script" uid="uid://wiqwhah5mal3" path="res://assets/scripts/ui/pre_battle_menu.gd" id="5_etxf0"]
 [ext_resource type="PackedScene" uid="uid://blf0ha5b4nxqh" path="res://assets/scenes/characters/unit_preview_entry.tscn" id="6_vesw4"]
@@ -5843,10 +5842,15 @@ encounter_manager = NodePath("random_encounter_manager")
 diff_manager = NodePath("difficulty_manager")
 victory_screen = NodePath("../CanvasLayer/battle_won")
 zone_end_screen = NodePath("../CanvasLayer/zone_end")
-random_events = Array[ExtResource("2_ahyqc")]([ExtResource("3_t7a27")])
 map_ui = NodePath("../CanvasLayer/map_ui")
 unit_parent = NodePath("battle_manager")
 party_manager = NodePath("../CanvasLayer2/party_manager")
+shop_count_min = 2
+shop_count_max = 4
+random_count_min = 5
+random_count_max = 8
+elite_count_min = 1
+elite_count_max = 3
 
 [node name="battle_manager" type="Node2D" parent="event_manager" unique_id=433279909 node_paths=PackedStringArray("event_manager", "victory_screen", "zone_end_screen", "ally_line", "enemy_line", "bind_line")]
 process_mode = 1
@@ -6094,6 +6098,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("7_48cn3")
+length = null
 shop_ui = NodePath("../../../../../../../ShopUI")
 map_ui = NodePath("../../../../../..")
 
@@ -6102,6 +6107,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("7_48cn3")
+length = null
 shop_ui = NodePath("../../../../../../../ShopUI")
 map_ui = NodePath("../../../../../..")
 
@@ -6110,6 +6116,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("7_48cn3")
+length = null
 shop_ui = NodePath("../../../../../../../ShopUI")
 map_ui = NodePath("../../../../../..")
 
@@ -6174,6 +6181,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("7_48cn3")
+length = null
 shop_ui = NodePath("../../../../../../../ShopUI")
 before_node = [NodePath("../../landmark/landmark"), NodePath("../../landmark/landmark2")]
 map_ui = NodePath("../../../../../..")
@@ -6183,6 +6191,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("7_48cn3")
+length = null
 shop_ui = NodePath("../../../../../../../ShopUI")
 before_node = [NodePath("../../landmark/landmark"), NodePath("../../landmark/landmark2"), NodePath("../../landmark/landmark3")]
 map_ui = NodePath("../../../../../..")
@@ -6192,6 +6201,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("7_48cn3")
+length = null
 shop_ui = NodePath("../../../../../../../ShopUI")
 before_node = [NodePath("../../landmark/landmark2"), NodePath("../../landmark/landmark3")]
 map_ui = NodePath("../../../../../..")
@@ -6257,6 +6267,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("7_48cn3")
+length = null
 shop_ui = NodePath("../../../../../../../ShopUI")
 before_node = [NodePath("../../landmark2/landmark3"), NodePath("../../landmark2/landmark4")]
 map_ui = NodePath("../../../../../..")
@@ -6266,6 +6277,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("7_48cn3")
+length = null
 shop_ui = NodePath("../../../../../../../ShopUI")
 before_node = [NodePath("../../landmark2/landmark3"), NodePath("../../landmark2/landmark4"), NodePath("../../landmark2/landmark5")]
 map_ui = NodePath("../../../../../..")
@@ -6275,6 +6287,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("7_48cn3")
+length = null
 shop_ui = NodePath("../../../../../../../ShopUI")
 before_node = [NodePath("../../landmark2/landmark4"), NodePath("../../landmark2/landmark5")]
 map_ui = NodePath("../../../../../..")
@@ -6290,6 +6303,25 @@ battle_manager = NodePath("../../../../../../../event_manager/battle_manager")
 diff_manager = NodePath("../../../../../../../event_manager/difficulty_manager")
 before_node = [NodePath("../VBoxContainer4/event_node3"), NodePath("../VBoxContainer4/event_node4"), NodePath("../VBoxContainer4/event_node5")]
 map_ui = NodePath("../../../../..")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/map_ui" unique_id=1862620389]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -390.0
+offset_top = 110.0
+offset_right = 434.0
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[b]LEGEND[/b]
+B - Battle    | S - Shop
+E - Elite     | R - Random Event"
+fit_content = true
 
 [node name="difficulty_label" type="RichTextLabel" parent="CanvasLayer/map_ui" unique_id=763834581]
 layout_mode = 1
@@ -6490,6 +6522,7 @@ size_flags_horizontal = 3
 text = "Skip"
 
 [node name="ShopUI" type="Control" parent="CanvasLayer" unique_id=1104253906 node_paths=PackedStringArray("item_list_container", "reroll_button", "gold_label", "close_button", "economy_manager", "diff_manager")]
+z_index = 5
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -6708,7 +6741,7 @@ grow_vertical = 2
 script = ExtResource("55_13gbe")
 formation_line = NodePath("../../3D_world/Node3D/ally_line")
 tab_container = NodePath("PanelContainer/VBoxContainer/TabContainer")
-formation_row = NodePath("PanelContainer/VBoxContainer/Formation")
+formation_row = NodePath("PanelContainer/VBoxContainer/VBoxContainer/Formation")
 unit_panel_scene = ExtResource("56_5nt7y")
 formation_card_scene = ExtResource("57_j4ihc")
 
@@ -6727,7 +6760,18 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Formation" type="HBoxContainer" parent="CanvasLayer2/party_manager/PanelContainer/VBoxContainer" unique_id=459644529]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/party_manager/PanelContainer/VBoxContainer" unique_id=2051043932]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer2/party_manager/PanelContainer/VBoxContainer/VBoxContainer" unique_id=2143259422]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.15
+text = "Formation"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Formation" type="HBoxContainer" parent="CanvasLayer2/party_manager/PanelContainer/VBoxContainer/VBoxContainer" unique_id=459644529]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
